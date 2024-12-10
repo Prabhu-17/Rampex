@@ -10,6 +10,8 @@ import UseRef from './Components/UseRef'
 import UseCallback from './Components/UseCallback'
 import UseContext from './Components/UseContext'
 import UseReducer from './Components/UseReducer'
+import Hooks from './pages/Hooks'
+import Git from './pages/Git'
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
           <Route path="/useCallback" element={<UseCallback />} />
           <Route path="/useContext" element={<UseContext />} />
           <Route path="/useReducer" element={<UseReducer />} />
+          <Route path="/hooks" element={<Hooks />} />
+          <Route path="/git" element={<Git />} />
         </Routes>
       </div>
       <Footer />

@@ -1,23 +1,23 @@
 import { useEffect, useRef, useState } from "react"
 
 const UseRef = () => {
-  const [count,setCount]=useState(0)
-  const countRef=useRef(0)
+  const [count, setCount] = useState(0)
+  const countRef = useRef(0)
+  const [text, setText] = useState('')
+  const prevText = useRef(text);
 
- const inputRef = useRef(null);
+  useEffect(()=>{
+     console.log(prevText);
+     prevText.current = text
+   })
 
-  useEffect(() => {
-    inputRef.current?.focus()
-  }, [])
+  const handleIncrement = () => {
+    setCount(count + 1)
+    countRef.current++
 
-  const handleIncrement =()=>{
-    setCount(count+1)
-    countRef.current++;
-
-    console.log('State:',count);
-    console.log('Ref:',countRef.current);  
+    console.log('State:', count)
+    console.log('Ref:', countRef.current)
   }
-
 
   return (
     <div>
@@ -31,9 +31,11 @@ const UseRef = () => {
         </button>
       </div>
       <div>
-        <h1>Example 2:</h1>
-        <input ref={inputRef} type="text" placeholder="Type something..." />
-      </div>
+       <h1>Example 2</h1>
+       <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+       <h2>Current Render is {text}</h2>
+       <h3>Previous Render is {prev.current}</h3>
+     </div>
     </div>
   )
 }
